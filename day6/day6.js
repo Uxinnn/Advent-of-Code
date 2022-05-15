@@ -16,6 +16,7 @@ simulate1Day = counter => {
 }
 
 simulateNDays = days => {
+    // Init counter to track number of fish
     let counter = {}
     for (let i = 0; i < 9; i++) {
         counter[i] = input.filter(n => n == i).length;
@@ -29,15 +30,19 @@ simulateNDays = days => {
     return counter;
 }
 
+getTotalFish = counter => {
+    return Object.values(counter).reduce((x, y) => x + y);
+}
+
 part1 = input => {
     let counter = simulateNDays(80);
-    let total_fish = Object.values(counter).reduce((x, y) => x + y);
+    let total_fish = getTotalFish(counter);
     console.log(total_fish);
 }
 
 part2 = input => {
     let counter = simulateNDays(256);
-    let total_fish = Object.values(counter).reduce((x, y) => x + y);
+    let total_fish = getTotalFish(counter);
     console.log(total_fish);
 }
 
