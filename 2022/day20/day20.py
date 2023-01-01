@@ -14,7 +14,7 @@ def move(code, i, zero_idx):
     tuple's 2nd value). We move this number and then check if we know where 0 is. If so, we check if the movement
     affects the index of 0 and change it if necessary.
     """
-    while not code[i][1]:  # Find a number that have not been visited
+    while code[i][1] == 1:  # Find a number that have not been visited
         i += 1
     raw_shift, _ = code[i]
     del code[i]
