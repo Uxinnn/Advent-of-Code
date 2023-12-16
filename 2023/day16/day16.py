@@ -112,7 +112,7 @@ def part2(file):
         # Enter from bot
         energized_count = simulate((max_i, j), (-1, 0), grid, max_i, max_j)
         max_energized_count = max(max_energized_count, energized_count)
-    print(f"Part 1: {max_energized_count}")
+    print(f"Part 2: {max_energized_count}")
 
 
 file = "input.in"
