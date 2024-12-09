@@ -71,6 +71,7 @@ def part2(file):
   disk_map = [(d, i // 2) if i % 2 == 0 else (d, None)
               for i, d in enumerate(disk_map)
               ]
+  disk_map = [d for d in disk_map if d[0] > -1]
   right = len(disk_map) - 1
   while right > -1:
     r_size, r_id = disk_map[right]
@@ -80,8 +81,8 @@ def part2(file):
     for left in range(right):
       l_size, l_id = disk_map[left]
       if l_id is None:
-        disk_map[left] = disk_map[right]
         if l_size > r_size:
+          disk_map[left] = disk_map[right]
           if left < len(disk_map) - 2 and disk_map[left + 1][1] is None:
             disk_map[left + 1] = (disk_map[left + 1][0] + l_size - r_size, None)
           else:
@@ -91,6 +92,7 @@ def part2(file):
           merge_free_space(disk_map, right)
           break
         elif l_size == r_size:
+          disk_map[left] = disk_map[right]
           disk_map[right] = (r_size, None)
           merge_free_space(disk_map, right)
           break
